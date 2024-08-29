@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,7 +23,8 @@ public class AccountController {
     }
 
     //Add Account REST API
-    public ResponseEntity<AccountDto> addAcount(AccountDto accountDto){
-        return new ResponseEntity<>(accountService.createAccount(accountDto), HttpStatus.CREATED)
+    @PostMapping("/addAccount")
+    public ResponseEntity<AccountDto> addAccount(@RequestBody AccountDto accountDto){
+        return new ResponseEntity<>(accountService.createAccount(accountDto), HttpStatus.CREATED);
     }
 }
