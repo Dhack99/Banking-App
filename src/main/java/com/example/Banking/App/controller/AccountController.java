@@ -35,4 +35,15 @@ public class AccountController {
         return  ResponseEntity.ok(accountDto);
     }
 
+    //Deposit REST API
+    @PutMapping(
+            path = "/deposit/{id}"
+    )
+    public ResponseEntity<AccountDto> deposit(@PathVariable Long id,
+                                              @RequestBody Map<String, Double> request){
+
+        double amount = request.get("amount");
+        AccountDto accountDto = accountService.deposit(id,amount);
+        return ResponseEntity.ok(accountDto);
+    }
 }
