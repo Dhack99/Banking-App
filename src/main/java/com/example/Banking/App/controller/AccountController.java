@@ -6,10 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1/accounts")
@@ -27,4 +26,13 @@ public class AccountController {
     public ResponseEntity<AccountDto> addAccount(@RequestBody AccountDto accountDto){
         return new ResponseEntity<>(accountService.createAccount(accountDto), HttpStatus.CREATED);
     }
+
+    //Get Account REST API
+    @GetMapping(
+            path = "/getAccountByID/{id}")
+    public ResponseEntity<AccountDto> getAccountByID(@PathVariable(value="id") Long id){
+        AccountDto accountDto = accountService.getAccountById(id);
+        return  ResponseEntity.ok(accountDto);
+    }
+
 }
