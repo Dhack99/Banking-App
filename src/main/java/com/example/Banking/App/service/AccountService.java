@@ -2,6 +2,8 @@ package com.example.Banking.App.service;
 
 import com.example.Banking.App.dto.AccountDto;
 
+import java.util.List;
+
 
 public interface AccountService {
 
@@ -11,4 +13,6 @@ public interface AccountService {
 
     AccountDto deposit(Long id,double amount);
     AccountDto withdraw(Long id,double amount);
+
+    List<AccountDto> getAllAccounts();
 }

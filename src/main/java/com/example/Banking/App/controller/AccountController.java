@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -59,4 +60,12 @@ public class AccountController {
         return ResponseEntity.ok(accountDto);
     }
 
+    //Get All Accounts REST API
+    @GetMapping(
+            path = "/getAllAccounts"
+    )
+    public ResponseEntity<List<AccountDto>> getAllAccounts(){
+       List<AccountDto> accounts = accountService.getAllAccounts();
+       return ResponseEntity.ok(accounts);
+    }
 }
